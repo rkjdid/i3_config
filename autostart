@@ -1,0 +1,64 @@
+#!/bin/bash
+#(sleep 2s && pnmixer) &
+#(sleep 2s && /home/rkj/.screenlayout/home.sh) &
+#(sleep 4s && feh --bg-scale /home/rkj/misc/gray.png) &
+#pasystray
+
+## Volume keys daemon
+#xfce4-volumed &
+
+## Enable power management
+#xfce4-power-manager &
+
+## Start Thunar Daemon
+#thunar --daemon &
+
+## Test if necessary
+## Detect and configure touchpad. See 'man synclient' for more info.
+if egrep -iq 'touchpad' /proc/bus/input/devices; then
+  synclient VertEdgeScroll=0
+  synclient TapButton1=1
+  synclient TapButton2=3
+  synclient TapButton3=2
+  synclient LockedDrags=1
+  synclient LockedDragTimeout=750
+  synclient MaxTapTime=130 MaxDoubleTapTime=130 SingleTapTimeout=130
+  synclient HorizScrollDelta=-18
+  synclient VertScrollDelta=-112
+  # synclient HorizTwoFingerScroll=1
+  synclient HorizTwoFingerScroll=0
+fi
+
+
+#-----------------------------------------------------------------------
+# X-server configuration
+# Keyboard control
+#-----------------------------------------------------------------------
+# Keyboard Layout (avoid ls | grep) adding fcking bad whitespace w/ latin9 variant
+#setxkbmap -layout "fr, fr"
+setxkbmap -layout "fr"
+#setxkbmap -layout "fr, fr" -variant "dvorak"
+#setxkbmap -layout "fr, fr" -variant "bepo"
+
+# Repeat delay(ms) + rate(ms) (default 660 25)
+xset r rate 240 70
+
+## Disable screen saver
+( sleep 15s && xset -dpms && xset s noblank && xset s off ) &
+
+#-----------------------------------------------------------------------
+# Mouse control
+#-----------------------------------------------------------------------
+# Pointer Speed
+#xset m 7 10 &     # Very Fast
+#xset m 5 4 &     # Faster
+##################~ xset m 3 9 &     # Normal(Fast)
+#~ xset m 8/7 0 &
+# System Default (2 4)
+#xset m default &
+xset m 14/10 7 & #razer
+#xset m 14/10 7 #wt-asus-wireless
+#xset m 6/2 6 #wt-asus-wireless
+
+#qbittorrent --no-splash &
+#transmission-gtk -m &
