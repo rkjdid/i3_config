@@ -7,5 +7,5 @@
 #echo i3-msg rename workspace $target to $1
 
 target=$(i3-msg -t get_workspaces | jq -r 'map(select(.focused))[0].name')
-i3-msg rename workspace $target to $1
+i3-msg rename workspace $target to "$1"
 
