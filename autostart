@@ -1,20 +1,6 @@
 #!/bin/bash
-#(sleep 2s && pnmixer) &
-#(sleep 2s && /home/rkj/.screenlayout/home.sh) &
-#(sleep 4s && feh --bg-scale /home/rkj/misc/gray.png) &
-#pasystray
 
-## Volume keys daemon
-#xfce4-volumed &
-
-## Enable power management
-#xfce4-power-manager &
-
-## Start Thunar Daemon
-#thunar --daemon &
-
-## Test if necessary
-## Detect and configure touchpad. See 'man synclient' for more info.
+# touchpad
 if egrep -iq 'touchpad' /proc/bus/input/devices; then
   synclient VertEdgeScroll=0
   synclient TapButton1=1
@@ -29,36 +15,36 @@ if egrep -iq 'touchpad' /proc/bus/input/devices; then
   synclient HorizTwoFingerScroll=0
 fi
 
-
-#-----------------------------------------------------------------------
-# X-server configuration
-# Keyboard control
-#-----------------------------------------------------------------------
-# Keyboard Layout (avoid ls | grep) adding fcking bad whitespace w/ latin9 variant
-#setxkbmap -layout "fr, fr"
+# keyboard
 setxkbmap -layout "fr"
-#setxkbmap -layout "fr, fr" -variant "dvorak"
-#setxkbmap -layout "fr, fr" -variant "bepo"
-
-# Repeat delay(ms) + rate(ms) (default 660 25)
 xset r rate 240 70
 
-## Disable screen saver
+# disable screensaver (?)
 ( sleep 15s && xset -dpms && xset s noblank && xset s off ) &
 
-#-----------------------------------------------------------------------
-# Mouse control
-#-----------------------------------------------------------------------
-# Pointer Speed
-#xset m 7 10 &     # Very Fast
-#xset m 5 4 &     # Faster
-##################~ xset m 3 9 &     # Normal(Fast)
-#~ xset m 8/7 0 &
-# System Default (2 4)
-#xset m default &
-xset m 14/10 7 & #razer
-#xset m 14/10 7 #wt-asus-wireless
-#xset m 6/2 6 #wt-asus-wireless
+# mouse
+xset m default &
+#xset m 14/10 7 & #razer
 
-#qbittorrent --no-splash &
-#transmission-gtk -m &
+# i3 layout
+ws1="1:1 "
+ws2="2:2 "
+ws3="3:3 "
+ws4="4:4 "
+ws5="5:5 "
+ws6="6:6 "
+ws7="7:7 "
+ws8="8:8 "
+ws9="9:9 "
+ws10="10:10 "
+
+# restore default layout
+#i3-msg 'workspace "$ws1"; append_layout /home/rkj/.config/i3/layouts/default/ide.json'
+#i3-msg 'workspace "$ws2"; append_layout /home/rkj/.config/i3/layouts/default/terminal.json'
+#i3-msg 'workspace "$ws3"; append_layout /home/rkj/.config/i3/layouts/default/www.json'
+#i3-msg 'workspace "$ws4"; append_layout /home/rkj/.config/i3/layouts/default/crypto.json'
+#i3-msg 'workspace "$ws5"; append_layout /home/rkj/.config/i3/layouts/default/mail.json'
+#i3-msg 'workspace "$ws9"; append_layout /home/rkj/.config/i3/layouts/default/media.json'
+#i3-msg 'workspace "$ws10"; append_layout /home/rkj/.config/i3/layouts/default/monitor.json'
+
+

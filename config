@@ -38,6 +38,9 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
+# start file manager
+bindsym $mod+e exec thunar
+
 # kill focused window
 bindsym $mod+Q kill
 
@@ -87,17 +90,19 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
+bindsym $mod+Shift+h layout splith
 
 # split in vertical orientation
 bindsym $mod+v split v
+bindsym $mod+Shift+v layout splitv
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+e layout tabbed
+bindsym $mod+z layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -124,8 +129,8 @@ set $ws8 "8:8 "
 set $ws9 "9:9 "
 set $ws10 "10:10 "
 
-assign [class="Thunderbird"] $ws5
-assign [class="Deadbeef"] $ws9
+# assign [class="Thunderbird"] $ws5
+# assign [class="Deadbeef"] $ws9
 
 # switch to workspace
 bindsym $mod+ampersand workspace $ws1
@@ -170,9 +175,10 @@ bindsym $mod+Shift+r restart
 
 # exit i3 alt
 bindsym $mod+exclam mode "$mode_system"
-set $mode_system (!)ock, (e)xit, (r)eboot, (s)shutdown
+set $mode_system (!)ock, sus(p)end, (e)xit, (r)eboot, (s)shutdown
 mode "$mode_system" {
     bindsym exclam exec --no-startup-id i3lock -c 000000, mode "default"
+    bindsym p exec --no-startup-id systemctl suspend
     bindsym e exec --no-startup-id i3-msg exit
     #bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot
@@ -245,6 +251,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym --release Print exec xfce4-screenshooter
 
 # toggle touchpad
 bindsym XF86Launch2 exec toggletouchpad # toggle touchpad
@@ -254,19 +261,13 @@ exec_always feh --bg-scale /home/rkj/misc/r6.jpg
 exec /home/rkj/.screenlayout/auto
 bindsym XF86Display exec /home/rkj/.screenlayout/auto
 
-# apps
+# background apps
 exec transmission-gtk -m
 exec blueman-applet
 exec pnmixer
 exec xfce4-clipman
-exec "goland; i3-msg move container to workspace number 1"
-exec "x-www-terminal; i3-msg move container to workspace number 1"
-exec "x-www-terminal; i3-msg move container to workspace number 2"
-exec "chromium; i3-msg move container to workspace number 3"
-exec "chromium https://www.tradingview.com/chart/afobgFqh/; i3-msg move container to workspace number 4"
-exec "thunderbird; i3-msg move container to workspace number 5"
-exec "x-www-browser https://www.youtube.com/; i3-msg move container to workspace number 9"
-exec "x-www-terminal -x htop; i3-msg move container to workspace number 0"
+exec nm-applet
+exec redshift
 
 # autostart script
 exec /home/rkj/.config/i3/autostart
@@ -276,8 +277,13 @@ bindsym button2 kill
 bindsym button3 floating toggle
 bindsym $mod+button3 sticky toggle, mark --toggle s
 
+# quicklaunch
+bindsym $mod+F2 exec /home/rkj/bin/py2fa
+
 # floaters
 #for_window [class="Pavucontrol"] floating enable, move position 0 0
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
+for_window [class="Py2fa"] floating enable
+for_window [class="Galculator"] floating enable
 
