@@ -56,6 +56,7 @@ bindsym $mod+button1 mark --toggle m
 bindsym $mod+x mark --toggle m
 bindsym $mod+m mark --toggle m
 bindsym $mod+s swap container with mark m
+bindsym $mod+button3 swap container with mark m
 bindsym $mod+Shift+s exec /home/rkj/.config/i3/monitor_swap
 
 # output focus
@@ -275,7 +276,7 @@ exec /home/rkj/.config/i3/autostart
 # mouse stuff
 bindsym button2 kill
 bindsym button3 floating toggle
-bindsym $mod+button3 sticky toggle, mark --toggle s
+bindsym $mod+button2 sticky toggle, mark --toggle s
 
 # quicklaunch
 bindsym $mod+F2 exec /home/rkj/bin/py2fa
