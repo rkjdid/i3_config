@@ -269,6 +269,7 @@ exec pnmixer
 exec xfce4-clipman
 exec nm-applet
 exec redshift
+exec /home/rkj/bin/bat_watchdog
 
 # autostart script
 exec /home/rkj/.config/i3/autostart
