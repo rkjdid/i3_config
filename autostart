@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # touchpad
-if egrep -iq 'touchpad' /proc/bus/input/devices; then
+# this grep is not working under current system (root_upgrade11)
+#if egrep -iq 'touchpad' /proc/bus/input/devices; then
   synclient VertEdgeScroll=0
   synclient TapButton1=1
   synclient TapButton2=3
@@ -13,7 +14,7 @@ if egrep -iq 'touchpad' /proc/bus/input/devices; then
   synclient VertScrollDelta=-112
   # synclient HorizTwoFingerScroll=1
   synclient HorizTwoFingerScroll=0
-fi
+#fi
 
 # keyboard
 setxkbmap -layout "fr"
