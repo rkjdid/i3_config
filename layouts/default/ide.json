@@ -1,0 +1,45 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1023,
+       "width": 470,
+       "x": 1440,
+       "y": 0
+    },
+    "name": "barista.run [~/go/src/barista.run] - .../pango/pango.go [barista.run] - GoLand",
+    "percent": 0.7,
+    "swallows": [
+       {
+       // "class": "^jetbrains\\-goland$",
+       // "instance": "^sun\\-awt\\-X11\\-XFramePeer$",
+       // "title": "^barista\\.run\\ \\[\\~\\/go\\/src\\/barista\\.run\\]\\ \\-\\ \\.\\.\\.\\/pango\\/pango\\.go\\ \\[barista\\.run\\]\\ \\-\\ GoLand$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 383,
+       "width": 562,
+       "x": 0,
+       "y": 0
+    },
+    "name": "rkj@tkp: ~",
+    "percent": 0.3,
+    "swallows": [
+       {
+       // "class": "^X\\-terminal\\-emulator$",
+       // "instance": "^x\\-terminal\\-emulator$",
+       // "title": "^rkj\\@tkp\\:\\ \\~$"
+       }
+    ],
+    "type": "con"
+}
+
