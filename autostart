@@ -9,11 +9,13 @@
   synclient TapButton3=2
   synclient LockedDrags=1
   synclient LockedDragTimeout=750
-  synclient MaxTapTime=90 MaxDoubleTapTime=130 SingleTapTimeout=130
-  synclient HorizScrollDelta=-18
-  synclient VertScrollDelta=-112
+  synclient MaxTapMove=20
+  synclient MaxTapTime=130 MaxDoubleTapTime=130 SingleTapTimeout=130
+  synclient HorizScrollDelta=-40
+  synclient VertScrollDelta=-40
   # synclient HorizTwoFingerScroll=1
   synclient HorizTwoFingerScroll=0
+  synclient FingerLow=20 FingerHigh=42
 #fi
 
 # keyboard
