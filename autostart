@@ -29,17 +29,17 @@ xset r rate 240 70
 xset m default &
 #xset m 14/10 7 & #razer
 
-# i3 layout
-ws1="1:1 "
-ws2="2:2 "
-ws3="3:3 "
-ws4="4:4 "
-ws5="5:5 "
-ws6="6:6 "
-ws7="7:7 "
-ws8="8:8 "
-ws9="9:9 "
-ws10="10:10 "
+# i3 base layout, will be overridden in config
+#ws1="1:1 "
+#ws2="2:2 "
+#ws3="3:3 "
+#ws4="4:4 "
+#ws5="5:5 "
+#ws6="6:6 "
+#ws7="7:7 "
+#ws8="8:8 "
+#ws9="9:9 "
+#ws10="10:10 "
 
 # restore default layout
 #i3-msg 'workspace "$ws1"; append_layout /home/rkj/.config/i3/layouts/default/ide.json'
