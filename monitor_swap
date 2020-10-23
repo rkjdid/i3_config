@@ -1,14 +1,35 @@
-#!/usr/bin/env bash
-# requires jq
+#!/usr/bin/env python3
 
-IFS=:
-outputs=$(i3-msg -t get_outputs | jq -r '.[]|"\(.name):\(.current_workspace)"' | grep -v 'null')
-[[ $(echo "$outputs" | wc -l) == 2 ]] || exit 1
+# pip install i3-py
 
-echo "$outputs" | \
-while read -r name current_workspace; do
-    echo "moving ${current_workspace} right..."
-    i3-msg workspace "${current_workspace}"
-    i3-msg move workspace to output right
-done
+# Script to swap which workspace is on which monitor (output)
+# Might not work as expected if at least one workspace is empty
+
+import i3, time
+
+def main():
+    outputs = i3.get_outputs()
+    if len(outputs) != 2:
+        print("requires 2 outputs")
+    workspaces = i3.get_workspaces()
+    actives = []
+    names = []
+    for i in outputs:
+        ws = i["current_workspace"]
+        name = i["name"]
+        if ws:
+            actives.append(ws)
+            names.append(name)
+
+    i3.command('workspace', actives[0])
+    i3.command('move', 'workspace to output %s' % names[1])
+
+    # Hacky fix for race condition
+    time.sleep(0.01)
+
+    i3.command('workspace', actives[1])
+    i3.command('move', 'workspace to output %s' % names[0])
+
+if __name__ == '__main__':
+    main()
 
