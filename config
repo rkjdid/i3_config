@@ -44,6 +44,9 @@ bindsym $mod+e exec thunar
 # restart ibus (hotfixes java jetbrains bug)
 bindsym $mod+i exec ibus restart
 
+# mender..
+bindsym $mod+o exec xplic
+
 # kill focused window
 bindsym $mod+Q kill
 
@@ -56,6 +59,7 @@ bindsym $mod+d exec dmenu_run
 
 # swap mode
 bindsym $mod+button1 mark --toggle m
+bindsym button1 exec xdotool getwindowfocus getwindowname| tr -d '\n'| xclip
 bindsym $mod+x mark --toggle m
 bindsym $mod+m mark --toggle m
 bindsym $mod+s swap container with mark m
@@ -65,8 +69,12 @@ bindsym $mod+Shift+s exec /home/rkj/.config/i3/monitor_swap
 # output focus
 bindsym $mod+Ctrl+Left focus output left
 bindsym $mod+Ctrl+Right focus output right
+bindsym $mod+Ctrl+Up focus output top
+bindsym $mod+Ctrl+Down focus output bottom
 bindsym $mod+Ctrl+Shift+Left move container to output left, focus output left
 bindsym $mod+Ctrl+Shift+Right move container to output right, focus output right
+bindsym $mod+Ctrl+Shift+Up move container to output top, focus output top
+bindsym $mod+Ctrl+Shift+Down move container to output bottom, focus output bottom
 
 # change focus
 #bindsym $mod+j focus left
@@ -179,7 +187,7 @@ bindsym $mod+Shift+r restart
 
 # exit i3 alt
 bindsym $mod+exclam mode "$mode_system"
-set $mode_system (!)ock, sus(p)end, (e)xit, (r)eboot, (s)shutdown
+set $mode_system (!)ock, (a)utosuspend, sus(p)end, (e)xit, (r)eboot, (s)shutdown
 mode "$mode_system" {
     bindsym exclam exec --no-startup-id i3lock -c 000000, mode "default"
     bindsym p exec --no-startup-id systemctl suspend
@@ -187,6 +195,7 @@ mode "$mode_system" {
     #bindsym h exec --no-startup-id i3exit hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot
     bindsym s exec --no-startup-id systemctl poweroff
+    bindsym a exec --no-startup-id autosuspend, mode "default"
 
     # exit system mode: "Enter" or "Escape"
     bindsym Return mode "default"
@@ -266,6 +275,7 @@ exec /home/rkj/.screenlayout/auto
 bindsym XF86Display exec /home/rkj/.screenlayout/auto
 
 # background apps
+exec ssh-agent
 exec transmission-gtk -m
 exec blueman-applet
 exec pnmixer
