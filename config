@@ -271,7 +271,7 @@ bindsym XF86Launch2 exec toggletouchpad # toggle touchpad
 
 # display
 exec_always feh --bg-scale /home/rkj/misc/r6.jpg
-exec /home/rkj/.screenlayout/auto
+#exec /home/rkj/.screenlayout/auto
 bindsym XF86Display exec /home/rkj/.screenlayout/auto
 
 # background apps
