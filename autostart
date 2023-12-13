@@ -20,7 +20,7 @@
 
 # keyboard
 setxkbmap -layout "fr"
-xset r rate 240 70
+xset r rate 240 90
 
 # disable screensaver (?)
 ( sleep 15s && xset -dpms && xset s noblank && xset s off ) &

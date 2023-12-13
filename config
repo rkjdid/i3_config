@@ -51,7 +51,7 @@ bindsym $mod+o exec xplic
 bindsym $mod+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec --no-startup-id "export PATH=/home/rkj/.local/bin:/home/rkj/usr/bin/:/home/rkj/bin:/bin:/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/snap/bin; dmenu_run"
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -262,8 +262,8 @@ bar {
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 bindsym --release Print exec xfce4-screenshooter
 
 # toggle touchpad
@@ -275,7 +275,7 @@ exec_always feh --bg-scale /home/rkj/misc/r6.jpg
 bindsym XF86Display exec /home/rkj/.screenlayout/auto
 
 # background apps
-exec ssh-agent
+#exec ssh-agent
 exec transmission-gtk -m
 exec blueman-applet
 exec pnmixer
